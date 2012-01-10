@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0039)file:///tmp/zim-p/print-to-browser.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>MicroCMS</title>
+		<meta name="Generator" content="Zim 0.48">
+		<style type="text/css">
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+		</style>
+	</head>
+	<body>
+
+<!-- Wiki content -->
+
+<h1>MicroCMS</h1>
+
+<h2>Instalation</h2>
+<p>
+1. Edit <code>config.php</code>. Define mysql credentials and server path. Routes should not be edited.<br>
+2. Upload to contents of the folder <code>upload to server</code><br>
+3. Create the database. Use <code>createbd.sql</code>.<br>
+4. Browse to server, everything should just work.<br>
+</p>
+
+<h2>Trying out the application</h2>
+<p>
+The menu contains links to Beatles songs.<br>
+If logged off, only 4 songs will sow. After a successful log in, a fifth menu will show up (Sgt Peppers), it's restricted content. This menu item also contains sub-pages. <br>
+</p>
+
+<p>
+There are two users on the database, one with a regular user role (john) and an administrator (admin):<br>
+</p>
+
+<p>
+Credentials:<br>
+</p>
+<pre>User: john
+Pass: beatles
+
+User:admin
+Pass:admin
+</pre>
+
+
+<p>
+When logged as admin, an edit link will show on the bottom of each page so the content can be edited. The edit form is naturally protected by the authentication system (read more below).<br>
+</p>
+
+
+<h2>Implementations details</h2>
+
+<p>
+MicroCMS implements MVC pattern. <br>
+</p>
+
+<p>
+<code>Index.php</code> is the common gate to all requests. Requests are routed to actions through a dispatcher - <code>dispatcher.php</code>.<br>
+</p>
+
+<p>
+Authentication is performed right away, so it's centralized at an easy access point. If th request does not qualify as valid, an exception is thrown and no action is called.<br>
+</p>
+
+<p>
+Actions live within the controllers and contain the aplication skeleton. While controlling main application flow, actions request data from models or order simple tasks to helpers. Then some data prepping is done and the apropriate templates are displayed to the user.<br>
+</p>
+
+<p>
+All data access operations is done by the models.  This could be reimplemented to work with other data storage backends. All remaining code should stay intact and fully functional.<br>
+</p>
+
+<p>
+Helpers contain small tasks. Often they act as glue between a controller and a model.<br>
+</p>
+
+<p>
+Models, Controllers and Helpers are organized by entity. This is merely for code clearness purposes. <br>
+</p>
+
+<p>
+All presentation aspects are handled by html templates and css files. The template engine is a tiny function that simply replaces placeholders with dynamic data. Thus, templates consist of nothing more than HTML and placeholders.<br>
+To edit the site looks, one should edit only these files.<br>
+</p>
+
+<p>
+The menu bar uses code from previous assignment. Extra code was included to transform a flat database rowset into a tree structure.<br>
+</p>
+
+<p>
+Error handling was simplified to the extreme. Whenever something 'bad' happens, an exception is thrown and it will propagate all the way to the only try-catch block, which wraps pretty much all the code.<br>
+Exception handling simply displays the error message in an error screen.<br>
+</p>
+
+
+
+<!-- End wiki content -->
+
+	
+
+
+</body></html>

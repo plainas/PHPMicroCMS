@@ -1,0 +1,36 @@
+
+#sitetitle{
+	width:300px;
+	float:left;
+}
+
+#loginform{
+	width:300px;
+	float:left;
+	
+}
+
+#content{
+	position:relative;
+	top: -80px;
+	width:520px;
+	
+}
+
+
+#menu{
+	position:relative;
+	float:top;
+	margin-top:90px;
+}
+
+h1{
+  font-size:27px;
+}
+
+h2{
+  font-size:20px;
+}
+
+
+

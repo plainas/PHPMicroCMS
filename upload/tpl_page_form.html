@@ -1,0 +1,29 @@
+
+<br />
+<div id="menu">
+	{menu}
+</div>
+
+
+<br />
+
+<div id="content">
+	
+	<h2>Editing - {title}</h2>
+
+	<form method="POST" action="{baseurl}index.php/submit/">
+
+		<br />Name:<br />
+		<input type="text" name="contentstitle" value="{title}" />
+
+		<br />
+		<br />Contents:<br />
+		<textarea name="contentstext" rows="20" cols="60">{content}</textarea>
+		
+		<input type="hidden" name="id" value="{id}" />
+		
+		<br />
+		<input type="submit" value="Submit" /><br />
+	</form>
+
+</div>
